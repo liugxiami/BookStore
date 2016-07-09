@@ -1,0 +1,49 @@
+﻿@model BookStore.Models.Customer
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
+        <div class="page-header">
+            <h2>Login <small style="color:red">@ViewBag.Error</small></h2>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { role = "form" }))
+            {
+                <div class="form-group">
+                    <label for="Username" class="control-label">Username:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                        @Html.TextBox("Username", "", new { @class = "form-control", type = "text" })
+                    </div>
+                    @Html.ValidationMessage("Username")
+                </div>
+                <div class="form-group">
+                    <label for="Password" class="control-label">Password:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        @Html.TextBox("Password", "", new { @class = "form-control", type = "password" })
+                    </div>
+                    @Html.ValidationMessage("Password")
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label><input type="checkbox" />Remember me</label>
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <input type="submit" value="Log in" class="btn btn-default" />
+                        </div>
+                        <div class="col-md-6 pull-right">
+                            @Html.ActionLink("No Account? Registration", "Register", new { @class = "btn btn-info" })
+                        </div>
+                    </div>
+            }
+        </div>
+    </div>
+</div>
+
+

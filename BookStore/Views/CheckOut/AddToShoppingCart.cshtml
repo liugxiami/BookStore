@@ -1,0 +1,54 @@
+﻿@model BookStore.Models.OrderVierModel
+@{
+    ViewBag.Title = "ShoppingCart";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2>ShoppingCart</h2>
+            </div>
+            <div class="row panel-body">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="@Url.Content(Model.Book.CoverImagePath)" alt="@Model.Book.Name"
+                                 class="img-thumbnail img-responsive" style="width:100px" />
+                        </td>
+                        <td>
+                            <div>
+                                <h3>@Html.ActionLink(Model.Book.Name, "BookDetails", "Home", "", new { id = Model.Book.Id })</h3>
+                                <p>by @Model.Book.Author</p>
+                                <p style="color:greenyellow"><small>In Stock</small></p>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" />This is a gift.</label>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p>$@Model.Book.Price</p>
+                        </td>
+                        <td>
+                            <p>@Model.Order.Amount</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <p class="pull-right"><strong>Subtotal(@Model.Order.Amount item):$@Model.Order.Total</strong></p>
+    </div>
+    <div class="row">
+        <button class="btn btn-lg btn-default pull-right">@Html.ActionLink("Proceed to checkout", "CheckOutBook", "CheckOut")</button>
+    </div>
+</div>
+

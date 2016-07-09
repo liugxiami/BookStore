@@ -1,0 +1,81 @@
+﻿@model List<BookStore.Models.Book>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@section Scripts{
+    <link href="~/Content/IndexCSS.css" rel="stylesheet" />
+}
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h1>Welcome to my bookstore!</h1>
+            <p>
+                Reading books and writing are among brain-stimulating activities shown to slow down cognitive
+                decline in old age, with people who participated in more mentally stimulating activities over
+                their lifetimes having a slower rate of decline in memory and other mental capacities.Reading
+                for pleasure has been linked to increased cognitive progress in vocabulary and mathematics
+                during adolescence. Moreover, the cognitive benefits of reading continue into mid-life.
+                <small>https://en.wikipedia.org/wiki/Reading_(process)</small>
+            </p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn More</a></p>
+        </div>
+    </div>
+    <div class="row" style="background-color:#eee;border-radius:5px; margin-bottom:20px;padding:20px">
+        <h2>Best Books Ever</h2>
+        <p>
+            Whatever it's called we love a list of what we think are the best books of all time so we've
+            compiled an entirely arbitrary and personal selection of titles below for you to disagree with.
+        </p>
+    </div>
+    <div class="row">
+        @foreach (var book in this.Model)
+            {
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <div style="width:250px;height:346px">
+                        <a href="@Url.Action("BookDetails","Home",new { id=@book.Id})">
+                            @if (book.CoverImagePath != null)
+                            {
+                                <img src="@Url.Content(book.CoverImagePath)" alt="@book.Name"
+                                     class="img-thumbnail img-responsive" style="max-width:230px;max-height:346px" />
+                            }
+                            else
+                            {
+                                <h2>@book.Name</h2>
+                            }
+                        </a>
+                    </div>
+                    <div class="caption">
+                        <div style="width:230px;height:100px;text-align:center">
+                            <h3>@book.Name</h3>
+                            <p>By @book.Author</p>
+                        </div>
+                        <div style="width:230px;height:180px">
+                            <p>@book.Notes</p>
+                        </div>
+                        <a href="@Url.Action("BookDetails","Home",new { @class = "btn btn-primary", id =@book.Id})">Add to cart</a>
+                        <span class="pull-right">$@book.Price</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <nav>
+        <ul class="pagination">
+            <li>
+                <a href="@Url.Action("Index","Home",new { pageNumber=ViewBag.pageNumber-1})" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+            </li>
+            @for (int i = 1; i <= ViewBag.totalPage; i++)
+            {
+                <li>@Html.ActionLink(i.ToString(), "Index", "Home", new { pageNumber = i })</li>
+            }
+            <li>
+                <a href="@Url.Action("Index","Home",new { pageNumber=ViewBag.pageNumber+1})" aria-label="Previous"><span aria-hidden="true">&raquo;</span></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+

@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Calculate";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@section Scripts{
+    <script src="~/Scripts/ToolJS.js"></script>
+}
+
+<div class="panel panel-info" style="width:370px">
+    <div class="panel-heading">Calculator</div>
+    <div class="panel-body">
+        <input type="text" id="tb1" placeholder="x" class="form-control" /><br />
+        <input type="text" id="tb2" placeholder="y" class="form-control" /><br />
+        <input type="text" id="tb3" placeholder="result" class="form-control" /><br />
+        <button type="submit" id="btnAdd" class="btn btn-info" value="add" style="width:80px">Add</button>
+        <button type="submit" id="btnSub" class="btn btn-success" value="sub" style="width:80px">Sub</button>
+        <button type="submit" id="btnMul" class="btn btn-danger" value="mul" style="width:80px">Mul</button>
+        <button type="submit" id="btnDiv" class="btn btn-warning" value="div" style="width:80px">Div</button>
+    </div>
+</div>
+<div class="alert alert-danger">
+    <button data-dismiss="alert" class="close" type="button">x</button>
+    <strong>Warning</strong> Shuttle launch in t-minus 10 seconds.
+</div>
+

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.2.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>@ViewBag.Title - My Book Store</title>
+    @RenderSection("Scripts", required: false)
+</head>
+<body>
+    <div class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-bookstore-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse" id="bs-bookstore-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href=@Url.Content("/Home/AboutUs")>About</a><span class="sr-only">(current)</span></li>
+                    <li>@Html.ActionLink("Books InStock", "Show", "Book", new { pageNumber = 1 }, null)</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse<span clss="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">recommendations</a></li>
+                            <li><a href="#">Choice Award</a></li>
+                            <li><a href="#">New Release</a></li>
+                            <li role="separator"></li>
+                            <li><a href=@Url.Content("/Tool/Calculate")>Tools</a></li>
+                        </ul>
+                    </li>
+                    <li><a href=@Url.Content("/Home/Contact")>Contact</a></li>
+                    <li>@Html.Partial("_SearchQueryPartial")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                    @{
+                        if (Session["UserId"] != null)
+                        {
+                            <li><p class="navbar-text">Hi,@Session["UserName"] (@Html.ActionLink("LogOff", "Logout", "Account"))</p></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        @RenderBody()
+        <div class="push" style="height:20px"></div>
+        <div class="footer panel-footer text-center"><p>Copyright &copy;@DateTime.Now.Year</p></div>
+    </div>
+</body>
+</html>

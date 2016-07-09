@@ -1,0 +1,67 @@
+﻿@model BookStore.Models.Customer
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@section Scripts{
+
+}
+
+<div class="row">
+    <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
+        <div class="page-header">
+            <h2>Register for a new Account</h2>
+            <p class="lead" style="color:red">@ViewBag.Message</p>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+            {
+                <div class="form-group">
+                    <label for="Username" class="control-label">Username:</label>
+                    @Html.TextBox("Username", "", new { @class = "form-control", type = "text" })
+                </div>
+                <div class="form-group">
+                    <label for="FirstName" class="control-label">Firstname:</label>
+                    @Html.TextBox("FirstName", "", new { @class = "form-control", type = "text" })
+                </div>
+                    <div class="form-group">
+                        <label for="LastName" class="control-label">Lastname:</label>
+                        @Html.TextBox("LastName", "", new { @class = "form-control", type = "text" })
+                    </div>
+                    <div class="form-group">
+                        <label for="Password" class="control-label">Password:</label>
+                        @Html.TextBox("Password", "", new { @class = "form-control", type = "password" })
+                    </div>
+                    <div class="form-group">
+                        <label for="EmailAddress" class="control-label">Email:</label>
+                        @Html.TextBox("EmailAddress", "", new { @class = "form-control", type = "text" })
+                    </div>
+                    <div class="form-group">
+                        <label for="Address1" class="control-label">Address:</label>
+                        @Html.TextBox("Address1", "", new { @class = "form-control", type = "text" })
+                    </div>
+                    <div class="form-group">
+                        <label for="City" class="control-label">City:</label>
+                        @Html.TextBox("City", "", new { @class = "form-control", type = "text" })
+                    </div>
+                    <div class="form-group">
+                        <label for="State" class="control-label">State:</label>
+                        @Html.TextBox("State", "", new { @class = "form-control", type = "text" })
+                    </div>
+                    <div class="form-group">
+                        <label for="Country" class="control-label">Country:</label>
+                        @Html.TextBox("Country", "", new { @class = "form-control", type = "text" })
+                    </div>
+                    <div class="form-group">
+                        <label for="PostCode" class="control-label">Postcode:</label>
+                        @Html.TextBox("PostCode", "", new { @class = "form-control", type = "text" })
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="submit" value="CTREATE ACCOUNT" class="btn btn-info btn-lg" />
+                        </div>
+                    </div>
+            }
+        </div>
+    </div>
+</div>
